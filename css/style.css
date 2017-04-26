@@ -80,21 +80,11 @@ section li {
 }
 
 #menu a:nth-child(1){
-    left:5%;
-    position:fixed;
-}
-
-#menu a:nth-child(2){
     margin:0;
     padding:0;
     margin-top:20px;
     display:inline-block;
-    letter-spacing: 10;
-}
-
-#menu a:nth-child(3){
-    right:5%;
-    position:fixed;
+    letter-spacing: 5;
 }
 
 #menu a:hover{
