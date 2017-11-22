@@ -15,24 +15,18 @@ function hidePage(val) {
 }
 
 function createArray(totalPages) {
-    for (var i = 0; i <= totalPages; i++) {
-        var x = $('#F' + i);
-        pages.push(x);
+    for (var i = 1; i <= totalPages; i++) {
+        pages.push('#F' + i);
     }
 }
 
-function handleDisplay(val, totalPages) {
-    for (var i = 0; i <= totalPages; i++) {
-        if (i != val) {
-            hidePage(pages[i]);
-        } else {
-            showPage(pages[i]);
-        }
-    }
+function handleDisplay(val, totalPages, oldPage) {
+    hidePage($('#F'+oldPage+''));
+    showPage($('#F'+val+'')); 
 }
 
 function buttonHandler(id) {
-    var temp = currPage;
+    var oldPage = currPage;
     if (id == "bk2lumby") {
         if (currPage != 1) {
             currPage--;
@@ -42,18 +36,18 @@ function buttonHandler(id) {
             currPage++;
         }
     }
-    if (temp != currPage) {
+    if (oldPage != currPage) {
         updateTracker(currPage);
-        handleDisplay(currPage, totalPages);
+        handleDisplay(currPage, totalPages, oldPage);
     }
 }
 
 $(document).ready(function () {
     totalPages = $('.textContainer').length;
+    createArray(totalPages);
 
     $("button").click(function () {
         var id = $(this).attr('id');
-        createArray(totalPages);
         buttonHandler(id);
     });
 });
